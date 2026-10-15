@@ -1,6 +1,6 @@
 # Zero Trust IAM Lab: Conditional Access, PIM and Access Governance in Entra ID
 
-**Status: 🚧 In progress.** Parts are checked off as they ship. The design below was written before implementation, the same way I'd plan a change to a production tenant.
+Parts are checked off as they ship. The design below was written before implementation, the same way I'd plan a change to a production tenant.
 
 This is Project 2 of my IAM portfolio. It builds on [Project 1: Hybrid IAM Lab (JML automation)](https://github.com/jagble/hybrid-iam-jml-lab) and uses the same fictional company, **Potomac Defense Systems (PDS)**, the same Entra ID tenant and the same users.
 
