@@ -69,7 +69,7 @@ The full design is in [`docs/01-design.md`](docs/01-design.md). In short:
 
 ## How I used AI
 
-I used an AI assistant (Claude) as a mentor and second pair of eyes throughout this project:
+I used AI assistants (Claude and ChatGPT) as a second pair of eyes throughout this project:
 
 - **Planning:** I talked through the design and its trade-offs with AI before building, then wrote down the decisions in the design doc
 - **Drafting:** the KQL queries and PowerShell were AI-drafted. I ran them read-only first and checked every result against the portal
