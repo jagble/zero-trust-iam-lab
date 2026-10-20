@@ -1,6 +1,6 @@
 # Zero Trust IAM Lab: Conditional Access, PIM and Access Governance in Entra ID
 
-**Status: 🚧 In progress, 2 of 8 parts complete.** Parts are checked off as they ship. The design was written before implementation, the same way I'd plan a change to a production tenant.
+**Status: 🚧 In progress, 4 of 8 parts complete.** Parts are checked off as they ship. The design was written before implementation, the same way I'd plan a change to a production tenant.
 
 This is Project 2 of my IAM portfolio. It builds on [Project 1: Hybrid IAM Lab (JML automation)](https://github.com/jagble/hybrid-iam-jml-lab) and uses the same fictional company, **Potomac Defense Systems (PDS)**, the same Entra ID tenant and the same users.
 
@@ -25,8 +25,8 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 |:---:|---|---|:---:|
 | **2.1** | [Design and prep](parts/2.1-design-and-prep/README.md) | Design doc, break-glass account, trial and cost checks, logging | ✅ Done |
 | **2.2** | [Conditional Access](parts/2.2-conditional-access/README.md) | 7 policies tested in report-only then enforced: MFA for all users, legacy auth blocked, phishing-resistant MFA for admins, leaver block, risk-based and location policies, plus alerts | ✅ Done |
-| **2.3** | Privileged Identity Management | Just-in-time admin roles, approval for Global Admin, PIM alerts | Planned |
-| **2.4** | Access packages | Request and approval workflow for program access, with expiration and separation-of-duties checks | Planned |
+| **2.3** | [Privileged Identity Management](parts/2.3-privileged-identity-management/README.md) | Standing GA removed. Just-in-time admin roles with approval for Global Admin, automatic expiry, activation alerts | ✅ Done |
+| **2.4** | [Access packages](parts/2.4-access-packages/README.md) | Two-stage request and approval for program data with 90-day expiry, and Finance/AP separation of duties blocked at request time | ✅ Done |
 | **2.5** | Access reviews | Quarterly manager certifications and a privileged role review | Planned |
 | **2.6** | Incident response | A simulated compromised account: detection, containment and a written incident report | Planned |
 | **2.7** | Identity metrics | One-page report: MFA coverage, standing admins, review completion, stale accounts | Planned |
@@ -39,8 +39,11 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 | **Conditional Access** | **7 policies** live, each tested with What If and in report-only before it was turned on, with no gap between security defaults and Conditional Access |
 | **Admin sign-in** | Admins must use **phishing-resistant MFA**. My admin account signs in with a device-bound passkey |
 | **Emergency access** | Break-glass proven to bypass every policy, and its sign-ins **email an alert within one 5-minute check** |
+| **Privileged access** | **No standing admin** except break-glass. Global Admin is eligible, needs approval, and **expired on its own after exactly 60 minutes**, with every step in the audit log |
+| **Access requests** | An engineer's request for program data went through **two approvers** and was granted automatically, with a **90-day end date** |
+| **Separation of duties** | An AP clerk's request for Finance access was **refused before any approver saw it** |
 | **Tamper alerts** | Alerts on any Conditional Access policy change and any change to the exclusion or leaver block groups |
-| **Findings** | 5, including no password writeback (high-risk synced users get blocked instead of resetting) and a missing sync exclusion caught before enforcement. [See 2.2](parts/2.2-conditional-access/README.md#11-findings) |
+| **Findings** | 15 so far, including: no password writeback, Azure Run command on a DC VM acting as Domain Admin, and access packages nobody could request until "Self" was selected. See [2.2](parts/2.2-conditional-access/README.md#11-findings), [2.3](parts/2.3-privileged-identity-management/README.md#8-findings) and [2.4](parts/2.4-access-packages/README.md#8-findings) |
 
 ## Design
 
