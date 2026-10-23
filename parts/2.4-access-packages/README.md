@@ -1,6 +1,7 @@
 # Part 2.4: Access Packages
 
-[← 2.3 Privileged Identity Management](../2.3-privileged-identity-management/README.md) · **2.4** · 2.5 Access Reviews (next)
+[← 2.3 Privileged Identity Management](../2.3-privileged-identity-management/README.md) · **2.4** · [2.5 Access Reviews →](../2.5-access-reviews/README.md)
+
 
 > **In this part:** I built a request-and-approval process for program data. Engineers ask for access, their manager and the program manager approve it, and it ends after 90 days. I also brought back the Project 1 separation-of-duties rule (no one holds both Finance and Accounts Payable), but this time the conflict is blocked **when the request is made**, not found by a script afterward.
 >
@@ -171,4 +172,4 @@ The request was refused **before it existed**, so there was nothing to approve. 
 
 ---
 
-**Next:** 2.5 Access Reviews (coming next) · [← Back to the project overview](../../README.md)
+**Next:** [2.5 Access Reviews →](../2.5-access-reviews/README.md) · [← Back to the project overview](../../README.md)
