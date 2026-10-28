@@ -1,6 +1,6 @@
 # Zero Trust IAM Lab: Conditional Access, PIM and Access Governance in Entra ID
 
-**Status: 🚧 In progress, 6 of 8 parts complete.** Parts are checked off as they ship. The design was written before implementation, the same way I'd plan a change to a production tenant.
+**Status: ✅ Complete, all 8 parts.** The design was written before implementation, the same way I'd plan a change to a production tenant.
 
 This is Project 2 of my IAM portfolio. It builds on [Project 1: Hybrid IAM Lab (JML automation)](https://github.com/jagble/hybrid-iam-jml-lab) and uses the same fictional company, **Potomac Defense Systems (PDS)**, the same Entra ID tenant and the same users.
 
@@ -29,8 +29,8 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 | **2.4** | [Access packages](parts/2.4-access-packages/README.md) | Two-stage request and approval for program data with 90-day expiry, and Finance/AP separation of duties blocked at request time | ✅ Done |
 | **2.5** | [Access reviews](parts/2.5-access-reviews/README.md) | Quarterly privileged role review by Security and manager reviews of program access, with denied access removed automatically | ✅ Done |
 | **2.6** | [Incident response](parts/2.6-incident-response/README.md) | A simulated compromised account: detection, triage from the logs, containment in 11 minutes, recovery, a new alert, and a written [incident report](docs/03-incident-report-maria-lopez.md) | ✅ Done |
-| **2.7** | Identity metrics | One-page report: MFA coverage, standing admins, review completion, stale accounts | Planned |
-| **2.8** | Non-human identity review | Inventory of app registrations and service principals, risky credentials and permissions, a managed identity, app access review | Planned |
+| **2.7** | [Identity metrics](parts/2.7-identity-metrics/README.md) | A one-page [metrics report](docs/04-identity-metrics-report.md): MFA coverage, standing admins, review completion, stale accounts, legacy auth | ✅ Done |
+| **2.8** | [Non-human identities](parts/2.8-non-human-identities/README.md) | An [inventory](docs/05-nhi-inventory.md) of every app and its credentials, a planted risky app caught and deleted, an alert on new app credentials, and the metrics report running as a managed identity | ✅ Done |
 
 ## Results so far
 
@@ -42,8 +42,12 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 | **Privileged access** | **No standing admin** except break-glass. Global Admin is eligible, needs approval, and **expired on its own after exactly 60 minutes**, with every step in the audit log |
 | **Access requests** | An engineer's request for program data went through **two approvers** and was granted automatically, with a **90-day end date** |
 | **Separation of duties** | An AP clerk's request for Finance access was **refused before any approver saw it** |
+| **Access reviews** | A **decision helper flagged an over-privileged helpdesk admin**, Security denied it, and the role was removed automatically. A manager's deny ended an engineer's program access **87 days early** and removed him from the group |
+| **Incident response** | A simulated compromised account was **contained in 11 minutes** and recovered. The incident showed that **passing MFA marked the risk as resolved**, so I added an alert for successful risky sign-ins |
+| **Identity metrics** | **100% MFA** among users who sign in, **1 standing admin** (break-glass), **100%** access review completion. But 315 never-used accounts have no MFA yet |
+| **Non-human identities** | Found an **Entra Connect app with Tier 0 rights** I didn't know existed, caught and deleted a planted app with a 2-year secret and directory-wide read, and moved the metrics report to a **managed identity with no stored credential** |
 | **Tamper alerts** | Alerts on any Conditional Access policy change and any change to the exclusion or leaver block groups |
-| **Findings** | 26 so far, including: no password writeback, Azure Run command on a DC VM acting as Domain Admin, access packages nobody could request until "Self" was selected, access reviews that remove nothing until the review ends, and a compromised account that showed "No risk" because MFA was satisfied. See [2.2](parts/2.2-conditional-access/README.md#11-findings), [2.3](parts/2.3-privileged-identity-management/README.md#8-findings), [2.4](parts/2.4-access-packages/README.md#8-findings), [2.5](parts/2.5-access-reviews/README.md#7-findings) and [2.6](parts/2.6-incident-response/README.md#8-findings) |
+| **Findings** | 40 in total, including: no password writeback, Azure Run command on a DC VM acting as Domain Admin, access packages nobody could request until "Self" was selected, access reviews that remove nothing until the review ends, and a compromised account that showed "No risk" because MFA was satisfied. See [2.2](parts/2.2-conditional-access/README.md#11-findings), [2.3](parts/2.3-privileged-identity-management/README.md#8-findings), [2.4](parts/2.4-access-packages/README.md#8-findings), [2.5](parts/2.5-access-reviews/README.md#7-findings), [2.6](parts/2.6-incident-response/README.md#8-findings), [2.7](parts/2.7-identity-metrics/README.md#3-findings) and [2.8](parts/2.8-non-human-identities/README.md#5-findings) |
 
 ## Design
 
@@ -61,7 +65,8 @@ The full design is in [`docs/01-design.md`](docs/01-design.md). In short:
 | Folder | What's in it |
 |---|---|
 | [`parts/`](parts/) | Step-by-step walkthroughs with screenshots, one per part |
-| [`docs/`](docs/) | The design and the incident response runbook |
+| [`docs/`](docs/) | The design, the incident response runbook, the 2.6 incident report, the 2.7 metrics report and the 2.8 non-human identity inventory |
+| [`scripts/`](scripts/) | The export and inventory scripts, the managed identity setup, and the metrics runbook |
 | [`policies/`](policies/) | The Conditional Access policies as JSON |
 
 ## Environment
