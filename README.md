@@ -1,6 +1,6 @@
 # Zero Trust IAM Lab: Conditional Access, PIM and Access Governance in Entra ID
 
-**Status: 🚧 In progress, 4 of 8 parts complete.** Parts are checked off as they ship. The design was written before implementation, the same way I'd plan a change to a production tenant.
+**Status: 🚧 In progress, 6 of 8 parts complete.** Parts are checked off as they ship. The design was written before implementation, the same way I'd plan a change to a production tenant.
 
 This is Project 2 of my IAM portfolio. It builds on [Project 1: Hybrid IAM Lab (JML automation)](https://github.com/jagble/hybrid-iam-jml-lab) and uses the same fictional company, **Potomac Defense Systems (PDS)**, the same Entra ID tenant and the same users.
 
@@ -27,8 +27,8 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 | **2.2** | [Conditional Access](parts/2.2-conditional-access/README.md) | 7 policies tested in report-only then enforced: MFA for all users, legacy auth blocked, phishing-resistant MFA for admins, leaver block, risk-based and location policies, plus alerts | ✅ Done |
 | **2.3** | [Privileged Identity Management](parts/2.3-privileged-identity-management/README.md) | Standing GA removed. Just-in-time admin roles with approval for Global Admin, automatic expiry, activation alerts | ✅ Done |
 | **2.4** | [Access packages](parts/2.4-access-packages/README.md) | Two-stage request and approval for program data with 90-day expiry, and Finance/AP separation of duties blocked at request time | ✅ Done |
-| **2.5** | Access reviews | Quarterly manager certifications and a privileged role review | Planned |
-| **2.6** | Incident response | A simulated compromised account: detection, containment and a written incident report | Planned |
+| **2.5** | [Access reviews](parts/2.5-access-reviews/README.md) | Quarterly privileged role review by Security and manager reviews of program access, with denied access removed automatically | ✅ Done |
+| **2.6** | [Incident response](parts/2.6-incident-response/README.md) | A simulated compromised account: detection, triage from the logs, containment in 11 minutes, recovery, a new alert, and a written [incident report](docs/03-incident-report-maria-lopez.md) | ✅ Done |
 | **2.7** | Identity metrics | One-page report: MFA coverage, standing admins, review completion, stale accounts | Planned |
 | **2.8** | Non-human identity review | Inventory of app registrations and service principals, risky credentials and permissions, a managed identity, app access review | Planned |
 
@@ -43,7 +43,7 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 | **Access requests** | An engineer's request for program data went through **two approvers** and was granted automatically, with a **90-day end date** |
 | **Separation of duties** | An AP clerk's request for Finance access was **refused before any approver saw it** |
 | **Tamper alerts** | Alerts on any Conditional Access policy change and any change to the exclusion or leaver block groups |
-| **Findings** | 15 so far, including: no password writeback, Azure Run command on a DC VM acting as Domain Admin, and access packages nobody could request until "Self" was selected. See [2.2](parts/2.2-conditional-access/README.md#11-findings), [2.3](parts/2.3-privileged-identity-management/README.md#8-findings) and [2.4](parts/2.4-access-packages/README.md#8-findings) |
+| **Findings** | 26 so far, including: no password writeback, Azure Run command on a DC VM acting as Domain Admin, access packages nobody could request until "Self" was selected, access reviews that remove nothing until the review ends, and a compromised account that showed "No risk" because MFA was satisfied. See [2.2](parts/2.2-conditional-access/README.md#11-findings), [2.3](parts/2.3-privileged-identity-management/README.md#8-findings), [2.4](parts/2.4-access-packages/README.md#8-findings), [2.5](parts/2.5-access-reviews/README.md#7-findings) and [2.6](parts/2.6-incident-response/README.md#8-findings) |
 
 ## Design
 
