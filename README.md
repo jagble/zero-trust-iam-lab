@@ -23,14 +23,14 @@ Project 1 automated the identity lifecycle and then exposed four gaps. This proj
 
 | Part | Title | What gets built | Status |
 |:---:|---|---|:---:|
-| **2.1** | [Design and prep](parts/2.1-design-and-prep/README.md) | Design doc, break-glass account, trial and cost checks, logging | ✅ Done |
-| **2.2** | [Conditional Access](parts/2.2-conditional-access/README.md) | 7 policies tested in report-only then enforced: MFA for all users, legacy auth blocked, phishing-resistant MFA for admins, leaver block, risk-based and location policies, plus alerts | ✅ Done |
-| **2.3** | [Privileged Identity Management](parts/2.3-privileged-identity-management/README.md) | Standing GA removed. Just-in-time admin roles with approval for Global Admin, automatic expiry, activation alerts | ✅ Done |
-| **2.4** | [Access packages](parts/2.4-access-packages/README.md) | Two-stage request and approval for program data with 90-day expiry, and Finance/AP separation of duties blocked at request time | ✅ Done |
-| **2.5** | [Access reviews](parts/2.5-access-reviews/README.md) | Quarterly privileged role review by Security and manager reviews of program access, with denied access removed automatically | ✅ Done |
-| **2.6** | [Incident response](parts/2.6-incident-response/README.md) | A simulated compromised account: detection, triage from the logs, containment in 11 minutes, recovery, a new alert, and a written [incident report](docs/03-incident-report-maria-lopez.md) | ✅ Done |
-| **2.7** | [Identity metrics](parts/2.7-identity-metrics/README.md) | A one-page [metrics report](docs/04-identity-metrics-report.md): MFA coverage, standing admins, review completion, stale accounts, legacy auth | ✅ Done |
-| **2.8** | [Non-human identities](parts/2.8-non-human-identities/README.md) | An [inventory](docs/05-nhi-inventory.md) of every app and its credentials, a planted risky app caught and deleted, an alert on new app credentials, and the metrics report running as a managed identity | ✅ Done |
+| **2.1** | [Design and prep](parts/2.1-design-and-prep/README.md) | Design doc, break-glass account, trial and cost checks, logging | ✅ |
+| **2.2** | [Conditional Access](parts/2.2-conditional-access/README.md) | 7 policies tested in report-only then enforced: MFA for all users, legacy auth blocked, phishing-resistant MFA for admins, leaver block, risk-based and location policies, plus alerts | ✅ |
+| **2.3** | [Privileged Identity Management](parts/2.3-privileged-identity-management/README.md) | Standing GA removed. Just-in-time admin roles with approval for Global Admin, automatic expiry, activation alerts | ✅ |
+| **2.4** | [Access packages](parts/2.4-access-packages/README.md) | Two-stage request and approval for program data with 90-day expiry, and Finance/AP separation of duties blocked at request time | ✅ |
+| **2.5** | [Access reviews](parts/2.5-access-reviews/README.md) | Quarterly privileged role review by Security and manager reviews of program access, with denied access removed automatically | ✅ |
+| **2.6** | [Incident response](parts/2.6-incident-response/README.md) | A simulated compromised account: detection, triage from the logs, containment in 11 minutes, recovery, a new alert, and a written [incident report](docs/03-incident-report-maria-lopez.md) | ✅ |
+| **2.7** | [Identity metrics](parts/2.7-identity-metrics/README.md) | A one-page [metrics report](docs/04-identity-metrics-report.md): MFA coverage, standing admins, review completion, stale accounts, legacy auth | ✅ |
+| **2.8** | [Non-human identities](parts/2.8-non-human-identities/README.md) | An [inventory](docs/05-nhi-inventory.md) of every app and its credentials, a planted risky app caught and deleted, an alert on new app credentials, and the metrics report running as a managed identity | ✅ |
 
 ## Results so far
 
